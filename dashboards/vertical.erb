@@ -1,0 +1,52 @@
+<script type='text/javascript'>
+$(function() {
+  // These settings override the defaults set in application.coffee. You can do this on a per dashboard basis.
+
+  Dashing.widget_base_dimensions = [270, 120]
+  Dashing.numColumns = 4
+});
+</script>
+
+
+<% content_for :title do %>The Salt Mines Dashboard<% end %>
+
+<div class="gridster">
+  <ul>
+    <li id="clock" data-row="1" data-col="1" data-sizex="4" data-sizey="1">
+      <div data-view="Clock"></div>
+      <i class="icon-time icon-background"></i>
+    </li>
+    <li id="radio" data-row="2" data-col="1" data-sizex="2" data-sizey="7">
+      <div data-id="radio" data-view="Radio" data-title="Radio"></div>
+    </li>
+    <li id="conference" data-row="2" data-col="3" data-sizex="2" data-sizey="4">
+      <div data-id="welcome" data-view="Text" data-title="Hello" data-text="This is your shiny new 1080p dashboard." data-moreinfo="Protip: You can drag the widgets around!"></div>
+    </li>
+    <li id="events" data-row="6" data-col="3" data-sizex="2" data-sizey="4">
+      <div data-id="welcome" data-view="Text" data-title="Hello" data-text="This is your shiny new 1080p dashboard." data-moreinfo="Protip: You can drag the widgets around!"></div>
+    </li>
+    <li id="gyro" data-row="9" data-col="1" data-sizex="1" data-sizey="2">
+      <div data-id="welcome" data-view="Text" data-title="Hello" data-text="This is your shiny new 1080p dashboard." data-moreinfo="Protip: You can drag the widgets around!"></div>
+    </li>
+
+    <li id="weather" data-row="9" data-col="2" data-sizex="1" data-sizey="2">
+      <div data-id="welcome" data-view="Text" data-title="Hello" data-text="This is your shiny new 1080p dashboard." data-moreinfo="Protip: You can drag the widgets around!"></div>
+    </li>
+    
+    <li id="cota" data-row="10" data-col="3" data-sizex="2" data-sizey="1">
+      <div data-id="welcome" data-view="Text" data-title="Hello" data-text="This is your shiny new 1080p dashboard." data-moreinfo="Protip: You can drag the widgets around!"></div>
+    </li>
+    <li id="twitter" data-row="11" data-col="1" data-sizex="4" data-sizey="1">
+      <div data-id="twitter_mentions" data-view="Comments" style="background-color:#ff9618;" data-moreinfo="Mentions for @TheSaltMines"></div>
+      <i class="icon-twitter icon-background"></i>
+    </li>
+
+    <li id="car2go" data-row="12" data-col="1" data-sizex="4" data-sizey="3">
+      <div data-id="welcome" data-view="Text" data-title="Hello" data-text="This is your shiny new 1080p dashboard." data-moreinfo="Protip: You can drag the widgets around!"></div>
+    </li>
+    <li id="headlines" data-row="15" data-col="1" data-sizex="4" data-sizey="2">
+      <div data-id="welcome" data-view="Text" data-title="Hello" data-text="This is your shiny new 1080p dashboard." data-moreinfo="Protip: You can drag the widgets around!"></div>
+    </li>    
+
+  </ul>
+</div>

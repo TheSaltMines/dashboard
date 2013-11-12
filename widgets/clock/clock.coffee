@@ -25,7 +25,8 @@ class Dashing.Clock extends Dashing.Widget
     m = today.getMinutes()
     m = @formatTime(m)
     @set('time', h + ":" + m + " " + AorP)
-    @set('date', d_names[today.getDay()]+", "+m_names[today.getMonth()]+" "+today.getDate())
+    @set('day', d_names[today.getDay()]);
+    @set('date', m_names[today.getMonth()]+" "+today.getDate())
 
   formatTime: (i) ->
     if i < 10 then "0" + i else i

@@ -1,0 +1,45 @@
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+$background-color:  #ec663c;
+
+$title-color:       rgba(255, 255, 255, 0.7);
+$moreinfo-color:    rgba(255, 255, 255, 0.7);
+$artist-color:    rgba(204, 204, 204, 0.7);
+
+// ----------------------------------------------------------------------------
+// Widget-radio styles
+// ----------------------------------------------------------------------------
+.widget-radio {
+
+  background-color: $background-color;
+
+  .title {
+    color: $title-color;
+  }
+
+  .more-info {
+    color: $moreinfo-color;
+  }
+
+  .updated-at {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+
+  &.large h3 {
+    font-size: 65px;
+  }
+  
+  span.title {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  span.artist {
+    display: block;
+    font-size: 18px;
+    color: $artist-color;
+  }
+}

@@ -4,13 +4,13 @@ require 'twitter'
 #### Get your twitter keys & secrets:
 #### https://dev.twitter.com/docs/auth/tokens-devtwittercom
 Twitter.configure do |config|
-  config.consumer_key = 'YOUR_CONSUMER_KEY'
-  config.consumer_secret = 'YOUR_CONSUMER_SECRET'
-  config.oauth_token = 'YOUR_OAUTH_TOKEN'
-  config.oauth_token_secret = 'YOUR_OAUTH_SECRET'
+  config.consumer_key = 'eWBpw4omptJd8ClCdKqQ'
+  config.consumer_secret = 'lYXrxXEqylIAK1oihHNoPcDC7XfW1b2I0hVJ1PA'
+  config.oauth_token = '818615719-LbKZueyjpg4Sb40V8ds36x13HaWmRnaeqPMmyR06'
+  config.oauth_token_secret = 'JDX4PybWXfMfYNHZ30Q04b0xZRDa5pRGMZaM8KyXoybgT'
 end
 
-search_term = URI::encode('#todayilearned')
+search_term = URI::encode('@TheSaltMines')
 
 SCHEDULER.every '10m', :first_in => 0 do |job|
   begin
