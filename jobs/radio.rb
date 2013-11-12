@@ -8,6 +8,13 @@ SCHEDULER.every '1m', :first_in => 0 do |job|
   npcover = json['queue'][0]['bigIcon']
   nptitle = json['queue'][0]['name']
   npartist = json['queue'][0]['artist']  
+  
+  upcoming = Hash.new({ value: 0 }) 
+  json['queue'].length.times do |i|
+    if i>0 && i<6
+      upcoming[i-1] = { cover: json['queue'][i]['bigIcon'], title: json['queue'][i]['name'], artist: json['queue'][i]['artist'] }
+    end
+  end
 
-  send_event('radio', { npcover: npcover, nptitle: nptitle, npartist: npartist})
+  send_event('radio', { npcover: npcover, nptitle: nptitle, npartist: npartist, upcoming: upcoming.values})
 end

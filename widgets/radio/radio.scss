@@ -13,6 +13,7 @@ $artist-color:    rgba(204, 204, 204, 0.7);
 .widget-radio {
 
   background-color: $background-color;
+  padding-top: 10px;
 
   .title {
     color: $title-color;
@@ -31,15 +32,66 @@ $artist-color:    rgba(204, 204, 204, 0.7);
     font-size: 65px;
   }
   
+  span { 
+    padding: 0;
+  }
+  
+  h1 {
+    padding-top: 30px;
+  }
+  
+  h1:first-child {
+    padding-top: 0;
+  }
+  
   span.title {
     display: block;
     font-size: 28px;
     font-weight: bold;
+    width: 400px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;    
   }
   
   span.artist {
     display: block;
     font-size: 18px;
     color: $artist-color;
+    width: 400px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;    
+  }
+  
+  .upcoming {
+    padding: 0 60px;
+  }
+  
+  .upcoming li {
+    height: 55px;
+    text-align: left;
+    position: relative;
+  }
+  .upcoming li span, .upcoming li img {
+    display: inline;
+    padding: 0;
+  }
+  .upcoming span.title {
+    font-size: 24px;
+    position: absolute;
+    top: 0;
+    left: 60px;
+    margin: 0;
+    text-align: left;
+  }
+  
+  .upcoming span.artist {
+    font-size: 16px;
+    position: absolute;
+    top: 30px;
+    left: 60px;
+    margin: 0;
+    text-align: left;
   }
 }

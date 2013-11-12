@@ -3,3 +3,14 @@
 <img data-bind-src="npcover" width="400" height="400"/>
 <span class="title" data-bind="nptitle"></span>
 <span class="artist" data-bind="npartist"></span>
+
+<h1 class="title">Coming up</h1>
+
+<ul class="upcoming list-nostyle">
+  <li data-foreach-item="upcoming">
+    <img data-bind-src="item.cover" width="50" height="50" />
+    <span class="title" data-bind="item.title"></span>
+    <span class="artist" data-bind="item.artist"></span>
+  </li>
+</ul>
+
