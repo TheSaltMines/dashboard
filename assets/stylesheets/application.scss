@@ -136,6 +136,10 @@ h3 {
   list-style: none;
 }
 
+.gridster ul li {
+  overflow: hidden;
+}
+
 .gs_w {
   width: 100%;
   display: table;
