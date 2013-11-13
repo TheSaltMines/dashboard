@@ -18,7 +18,7 @@ SCHEDULER.every '10m', :first_in => 0 do |job|
 
     if tweets
       tweets.map! do |tweet|
-        { name: tweet.user.name, body: tweet.text, avatar: tweet.user.profile_image_url_https }
+        { name: tweet.user.name, body: tweet.text, avatar: tweet.user.profile_image_url_https.sub('normal','bigger') }
       end
       send_event('twitter_mentions', comments: tweets)
     end
