@@ -21,18 +21,20 @@ SCHEDULER.every '1m', :first_in => 0 do |job|
     if dtstart 
       dtstart = DateTime.parse(dtstart[1]) - (5.0/24.0) # Subtract 5 hours for timezone
       dtend   = DateTime.parse(dtend[1]) - (5.0/24.0) # Subtract 5 hours for timezone
-            
-      if summary  
-        summary = summary[1]
-      else
-        summary = 'no details'
-      end
       
-      upcoming[i] = { summary: summary, startdate: { hour: dtstart.hour%12, minute: "%02d"%dtstart.min, ampm: (dtstart.hour%12>12?'pm':'am'), year: dtstart.year, month: Date::MONTHNAMES[dtstart.month], day: dtstart.day }, enddate: { hour: dtend.hour%12, minute: "%02d"%dtend.min, ampm: (dtend.hour%12>12?'pm':'am'), year: dtend.year, month: Date::MONTHNAMES[dtend.month], day: dtend.day } }
-      i+=1
+      if dtstart > DateTime.now 
+            
+        if summary  
+          summary = summary[1]
+        else
+          summary = 'no details'
+        end
+        
+        upcoming[i] = { summary: summary, startdate: { hour: dtstart.hour%12, minute: "%02d"%dtstart.min, ampm: (dtstart.hour%12>12?'pm':'am'), year: dtstart.year, month: Date::MONTHNAMES[dtstart.month], day: dtstart.day, dayofweek: Date::DAYNAMES[dtstart.cwday] }, enddate: { hour: dtend.hour%12, minute: "%02d"%dtend.min, ampm: (dtend.hour%12>12?'pm':'am'), year: dtend.year, month: Date::MONTHNAMES[dtend.month], day: dtend.day, dayofweek: Date::DAYNAMES[dtend.cwday] } }
+        i+=1
+      end
     end
   end
-  p upcoming
 
-  send_event('events', { upcoming: upcoming.values })
+  send_event('events', { upcoming: upcoming.values[0..5] })
 end
