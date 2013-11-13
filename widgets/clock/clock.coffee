@@ -13,9 +13,9 @@ class Dashing.Clock extends Dashing.Widget
     m = today.getMonth();
     d = today.getDay();
     if (h>=12)
-      AorP="PM";
+      AorP="pm";
     else
-      AorP="AM";
+      AorP="am";
 
     if (h>=13)
       h-=12;
@@ -24,7 +24,7 @@ class Dashing.Clock extends Dashing.Widget
 
     m = today.getMinutes()
     m = @formatTime(m)
-    @set('time', h + ":" + m + " " + AorP)
+    @set('time', h + ":" + m + AorP)
     @set('day', d_names[today.getDay()]);
     @set('date', m_names[today.getMonth()]+" "+today.getDate())
 

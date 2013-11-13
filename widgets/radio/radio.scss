@@ -1,11 +1,11 @@
 // ----------------------------------------------------------------------------
 // Sass declarations
 // ----------------------------------------------------------------------------
-$background-color:  #ec663c;
+$background-color:  #9c4274;
 
-$title-color:       rgba(255, 255, 255, 0.7);
-$moreinfo-color:    rgba(255, 255, 255, 0.7);
-$artist-color:    rgba(204, 204, 204, 0.7);
+$title-color:       #FFF;
+$moreinfo-color:    #FFF;
+$artist-color:    #DDD;
 
 // ----------------------------------------------------------------------------
 // Widget-radio styles
@@ -13,7 +13,7 @@ $artist-color:    rgba(204, 204, 204, 0.7);
 .widget-radio {
 
   background-color: $background-color;
-  padding-top: 10px;
+  vertical-align: top !important;
 
   .title {
     color: $title-color;
@@ -37,11 +37,14 @@ $artist-color:    rgba(204, 204, 204, 0.7);
   }
   
   h1 {
-    padding-top: 30px;
+    padding-top: 50px;
+    padding-left: 60px;
+    text-align: left;
+    font-weight: bold;
   }
   
   h1:first-child {
-    padding-top: 0;
+    padding-top: 20px;
   }
   
   span.title {
@@ -49,7 +52,7 @@ $artist-color:    rgba(204, 204, 204, 0.7);
     font-size: 28px;
     font-weight: bold;
     width: 400px;
-    text-align: center;
+    text-align: left;
     margin-left: auto;
     margin-right: auto;    
   }
@@ -59,7 +62,7 @@ $artist-color:    rgba(204, 204, 204, 0.7);
     font-size: 18px;
     color: $artist-color;
     width: 400px;
-    text-align: center;
+    text-align: left;
     margin-left: auto;
     margin-right: auto;    
   }
@@ -80,6 +83,7 @@ $artist-color:    rgba(204, 204, 204, 0.7);
   .upcoming span.title {
     font-size: 24px;
     position: absolute;
+    font-weight: normal;
     top: 0;
     left: 60px;
     margin: 0;

@@ -1,0 +1,15 @@
+<h1 class="title" data-bind="title"></h1>
+
+<ul class="upcoming list-nostyle">
+  <li data-foreach-item="upcoming">
+    <span class="title" data-bind="item.summary"></span>
+    <span class="date">
+      <span class="month" data-bind="item.startdate.month"></span>    
+      <span class="day" data-bind="item.startdate.day"></span>    
+      <span class="hour" data-bind="item.startdate.hour"></span>:<span class="minute" data-bind="item.startdate.minute">
+      <span class="ampm" data-bind="item.startdate.ampm"></span>    
+    </span>
+  </li>
+</ul>
+
+<p class="updated-at" data-bind="updatedAtMessage"></p>

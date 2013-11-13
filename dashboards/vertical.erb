@@ -6,6 +6,12 @@ $(function() {
   Dashing.numColumns = 4
 });
 </script>
+<link href='http://fonts.googleapis.com/css?family=Armata' rel='stylesheet' type='text/css'>
+<style>
+  body, div, p, li, span {
+    font-family: 'Armata', 'Century Gothic', 'Arial';
+  }
+</style>
 
 
 <% content_for :title do %>The Salt Mines Dashboard<% end %>
@@ -21,10 +27,10 @@ $(function() {
       <i class="icon-music icon-background"></i>      
     </li>
     <li id="conference" data-row="2" data-col="3" data-sizex="2" data-sizey="4">
-      <div data-id="welcome" data-view="Text" data-title="Hello" data-text="This is your shiny new 1080p dashboard." data-moreinfo="Protip: You can drag the widgets around!"></div>
+      <div data-id="conference" data-view="Calendar" data-title="Conference Room Bookings" data-text="This is your shiny new 1080p dashboard." data-moreinfo="Protip: You can drag the widgets around!"></div>
     </li>
     <li id="events" data-row="6" data-col="3" data-sizex="2" data-sizey="4">
-      <div data-id="welcome" data-view="Text" data-title="Hello" data-text="This is your shiny new 1080p dashboard." data-moreinfo="Protip: You can drag the widgets around!"></div>
+      <div data-id="events" data-view="Calendar" data-title="Upcoming Events" data-text="This is your shiny new 1080p dashboard." data-moreinfo="Protip: You can drag the widgets around!"></div>
     </li>
     <li id="gyro" data-row="9" data-col="1" data-sizex="1" data-sizey="2">
       <div data-id="gyro" data-view="Number" data-title="Gyro Count" style="background-color:#96bf48;"></div>
