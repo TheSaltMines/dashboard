@@ -23,7 +23,6 @@ GEM
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
     hike (1.2.3)
-    icalendar (1.4.4)
     multi_json (1.8.2)
     multipart-post (1.2.0)
     rack (1.5.2)
@@ -65,11 +64,12 @@ GEM
       simple_oauth (~> 0.2)
     tzinfo (1.1.0)
       thread_safe (~> 0.1)
+    xml-simple (1.1.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   dashing
-  icalendar
   twitter
+  xml-simple

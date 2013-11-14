@@ -13,6 +13,7 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
 .widget-number {
 
   background-color: $background-color;
+  vertical-align: top !important;
 
   .title {
     color: $title-color;
