@@ -37,7 +37,7 @@ $artist-color:    #DDD;
   }
   
   h1 {
-    padding-top: 40px;
+    padding-top: 30px;
     padding-left: 60px;
     text-align: left;
     font-weight: bold;
@@ -76,6 +76,12 @@ $artist-color:    #DDD;
     text-align: left;
     position: relative;
   }
+  
+  /* Only show the first three upcoming tracks */
+  .upcoming li:nth-child(n+4) {
+    display: none;
+  }
+  
   .upcoming li span, .upcoming li img {
     display: inline;
     padding: 0;
