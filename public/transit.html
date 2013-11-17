@@ -22,7 +22,7 @@
         
       	var markers = Array();
       	var info = Array();
-      	var sm = {
+      	var sm = [{
             type: 'Feature',
             geometry: {
                 type: 'Point',
@@ -34,12 +34,36 @@
                 'marker-color': '#F79270',
                 'marker-symbol': 's',         
             }
-        }
+        },{
+            type: 'Feature',
+            geometry: {
+                type: 'Point',
+                coordinates: [-83.001623, 40.025421]
+            },
+            properties: {
+                title: 'Indianola & Melrose (1491)',
+                'marker-size': 'small',
+                'marker-color': '#C31735',
+                'marker-symbol': 'bus',         
+            }          
+        },{
+            type: 'Feature',
+            geometry: {
+                type: 'Point',
+                coordinates: [-83.001357, 40.024436]
+            },
+            properties: {
+                title: 'Indianola & Weber (4060)',
+                'marker-size': 'small',
+                'marker-color': '#C31735',
+                'marker-symbol': 'bus',         
+            }          
+        }]
       	
       	setInterval(function() { updateMarkers() }, 300000);
+      	
         function updateMarkers() {
-      	  console.log('updating markers');
-          var features = [sm];     
+          var features = sm;     
           
           $.getJSON("https://www.car2go.com/api/v2.0/vehicles?loc=columbus&format=json&callback=?", function(response) {
           	for (var i in response.placemarks) {
@@ -68,6 +92,7 @@
           });
         }     
         updateMarkers(); 	
+
       });
     
     </script>
