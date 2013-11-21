@@ -10,12 +10,17 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);;
 // ----------------------------------------------------------------------------
 // Widget-weather styles
 // ----------------------------------------------------------------------------
-.widget-weather { 
+.widget-rickshawgraph { 
  
   background-color: $background-color;
   
   .title { 
     color: $title-color;
+    text-shadow: 0 0 18px #666 !important;
+  }
+
+  h2.value {
+    text-shadow: 0 0 18px #666  !important;
   }
  
   .temp {
