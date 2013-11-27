@@ -8,7 +8,10 @@ SCHEDULER.every '1m', :first_in => 0 do |job|
   
   reDTSTART = /DTSTART:(\d\d\d\d\d\d\d\dT\d\d\d\d\d\dZ)/
   reDTEND   = /DTEND:(\d\d\d\d\d\d\d\dT\d\d\d\d\d\dZ)/
-  reSUMMARY = /SUMMARY:\s*(.*)\s*DESCRIPTION/
+  reDTSTART_allday = /DTSTART;VALUE=DATE:(\d\d\d\d\d\d\d\d)/
+  reDTEND_allday   = /DTEND;VALUE=DATE:(\d\d\d\d\d\d\d\d)/    
+  
+  reSUMMARY = /SUMMARY:\s*(.*)\s*(DESCRIPTION|ORGANIZER)/
   
   upcoming = Hash.new({ value: 0 })   
   i = 0
@@ -33,6 +36,27 @@ SCHEDULER.every '1m', :first_in => 0 do |job|
         upcoming[i] = { summary: summary, startdate: { hour: dtstart.hour%12, minute: "%02d"%dtstart.min, ampm: (dtstart.hour%12>12?'pm':'am'), year: dtstart.year, month: Date::MONTHNAMES[dtstart.month], day: dtstart.day, dayofweek: Date::DAYNAMES[dtstart.cwday] }, enddate: { hour: dtend.hour%12, minute: "%02d"%dtend.min, ampm: (dtend.hour%12>12?'pm':'am'), year: dtend.year, month: Date::MONTHNAMES[dtend.month], day: dtend.day, dayofweek: Date::DAYNAMES[dtend.cwday] } }
         i+=1
       end
+    else
+      dtstart = reDTSTART_allday.match event
+      dtend   = reDTEND_allday.match event   
+      
+      if dtstart       
+      
+        dtstart = Date.parse(dtstart[1])
+        dtend   = Date.parse(dtend[1])
+        
+        if dtstart > DateTime.now 
+          if summary  
+            summary = summary[1]
+          else
+            summary = 'no details'
+          end
+          
+          upcoming[i] = { summary: summary, startdate: { year: dtstart.year, month: Date::MONTHNAMES[dtstart.month], day: dtstart.day, dayofweek: Date::DAYNAMES[dtstart.cwday] }, enddate: { year: dtend.year, month: Date::MONTHNAMES[dtend.month], day: dtend.day, dayofweek: Date::DAYNAMES[dtend.cwday] } }
+          i+=1
+        
+        end
+      end              
     end
   end
 
