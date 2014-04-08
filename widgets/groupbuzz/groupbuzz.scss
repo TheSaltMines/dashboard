@@ -1,0 +1,79 @@
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+$background-color:  #FD952F;
+
+$title-color:       #FFF;
+$moreinfo-color:    #FFF;
+$artist-color:    #DDD;
+
+// ----------------------------------------------------------------------------
+// Widget-radio styles
+// ----------------------------------------------------------------------------
+.widget-groupbuzz {
+
+  background-color: $background-color;
+  vertical-align: top !important;
+
+  .title {
+    color: $title-color;
+  }
+
+  .more-info {
+    color: $moreinfo-color;
+  }
+
+  .updated-at {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+
+  &.large h3 {
+    font-size: 65px;
+  }
+  
+  span { 
+    padding: 0;
+  }
+  
+  h1 {
+    padding-top: 30px;
+    padding-left: 60px;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .topics {
+    padding: 0 60px;
+    text-align: left;
+  }
+  
+  .topics li {
+    display:block;
+    margin-bottom:20px;
+    color: #FFF;
+  }
+  
+  .topics li .details, .topics li.thisweek {
+    color: #efd7c2;
+  }
+  
+  .topics li.earlier, .topics li.earlier .details {
+    color: #be783a;
+  }
+  
+  .topics .topic, .topics .latest {
+    font-size: 18px;
+  }
+  
+  .topics .details, .topics .contributors, .topics .posts {
+    font-size: 14px;
+  }
+  
+  .topics .details {
+    display: block;    
+  }
+  
+  
+
+}
