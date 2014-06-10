@@ -14,8 +14,12 @@ SCHEDULER.every '1m', :first_in => 0 do |job|
   reSUMMARY = /SUMMARY:\s*(.*)\s*(DESCRIPTION|ORGANIZER)/
   reDESCRIPTION = /DESCRIPTION:\s*(.*)\s*(CREATED|ORGANIZER)/  
   
-  upcoming = Hash.new({ value: 0 })   
+  today = Hash.new({ value: 0 })   
+  thisweek = Hash.new({ value: 0 })     
+  later = Hash.new({ value: 0 })     
+  
   i = 0
+  max_events = 4
   events.each do |event|  
 
     dtstart     = reDTSTART.match event
@@ -26,8 +30,8 @@ SCHEDULER.every '1m', :first_in => 0 do |job|
     if dtstart 
 
     
-      dtstart = DateTime.parse(dtstart[1])# - (5.0/24.0) # Subtract 5 hours for timezone
-      dtend   = DateTime.parse(dtend[1])# - (5.0/24.0) # Subtract 5 hours for timezone
+      dtstart = DateTime.parse(dtstart[1])
+      dtend   = DateTime.parse(dtend[1])
 
       
       if dtstart > DateTime.now 
@@ -45,34 +49,28 @@ SCHEDULER.every '1m', :first_in => 0 do |job|
         end
         
         summary = "#{description} (#{summary})"
-               
+        time = Time.new()
+        today_start = Time.new(time.year, time.month, time.day)
+        today_end = today_start + 86399
+        thisweek_end = today_start + 604799
         
-        upcoming[i] = { summary: summary, startdate: { hour: dtstart.hour%12, minute: "%02d"%dtstart.min, ampm: (dtstart.hour>12?'pm':'am'), year: dtstart.year, month: Date::MONTHNAMES[dtstart.month], day: dtstart.day, dayofweek: Date::DAYNAMES[dtstart.cwday] }, enddate: { hour: dtend.hour%12, minute: "%02d"%dtend.min, ampm: (dtend.hour>12?'pm':'am'), year: dtend.year, month: Date::MONTHNAMES[dtend.month], day: dtend.day, dayofweek: Date::DAYNAMES[dtend.cwday] } }
+        if (today_start..today_end).cover?(dtstart.to_time()) && (i<max_events)
+              today[today.length] = { summary: summary, startdate: { hour: dtstart.hour%12, minute: "%02d"%dtstart.min, ampm: (dtstart.hour>12?'pm':'am'), year: dtstart.year, month: Date::MONTHNAMES[dtstart.month], day: dtstart.day, dayofweek: Date::DAYNAMES[dtstart.cwday] }, enddate: { hour: dtend.hour%12, minute: "%02d"%dtend.min, ampm: (dtend.hour>12?'pm':'am'), year: dtend.year, month: Date::MONTHNAMES[dtend.month], day: dtend.day, dayofweek: Date::DAYNAMES[dtend.cwday] } }
+              
+        elsif (today_start..thisweek_end).cover?(dtstart.to_time()) && (i<max_events)
+              thisweek[thisweek.length] = { summary: summary, startdate: { hour: dtstart.hour%12, minute: "%02d"%dtstart.min, ampm: (dtstart.hour>12?'pm':'am'), year: dtstart.year, month: Date::MONTHNAMES[dtstart.month], day: dtstart.day, dayofweek: Date::DAYNAMES[dtstart.cwday] }, enddate: { hour: dtend.hour%12, minute: "%02d"%dtend.min, ampm: (dtend.hour>12?'pm':'am'), year: dtend.year, month: Date::MONTHNAMES[dtend.month], day: dtend.day, dayofweek: Date::DAYNAMES[dtend.cwday] } }
+          
+        elsif (i<max_events)
+              later[later.length] = { summary: summary, startdate: { hour: dtstart.hour%12, minute: "%02d"%dtstart.min, ampm: (dtstart.hour>12?'pm':'am'), year: dtstart.year, month: Date::MONTHNAMES[dtstart.month], day: dtstart.day, dayofweek: Date::DAYNAMES[dtstart.cwday] }, enddate: { hour: dtend.hour%12, minute: "%02d"%dtend.min, ampm: (dtend.hour>12?'pm':'am'), year: dtend.year, month: Date::MONTHNAMES[dtend.month], day: dtend.day, dayofweek: Date::DAYNAMES[dtend.cwday] } }
+        end
+        
+        
         i+=1
       end
-    else
-      dtstart = reDTSTART_allday.match event
-      dtend   = reDTEND_allday.match event   
-      
-      if dtstart       
-      
-        dtstart = Date.parse(dtstart[1])
-        dtend   = Date.parse(dtend[1])
-        
-        if dtstart > DateTime.now 
-          if summary  
-            summary = summary[1]
-          else
-            summary = 'no details'
-          end
-          
-          upcoming[i] = { summary: description, startdate: { year: dtstart.year, month: Date::MONTHNAMES[dtstart.month], day: dtstart.day, dayofweek: Date::DAYNAMES[dtstart.cwday] }, enddate: { year: dtend.year, month: Date::MONTHNAMES[dtend.month], day: dtend.day, dayofweek: Date::DAYNAMES[dtend.cwday] } }
-          i+=1
-        
-        end
-      end              
     end
   end
+  
 
-  send_event('events', { upcoming: upcoming.values[0..3] })
+
+  send_event('events', { today: today.values[0..3], thisweek: thisweek.values[0..3], later: later.values[0..3] })
 end

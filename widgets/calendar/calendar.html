@@ -1,7 +1,27 @@
 <h1 class="title" data-bind="title"></h1>
 
 <ul class="upcoming list-nostyle">
-  <li data-foreach-item="upcoming">
+  <li data-foreach-item="today" class="today">
+    <span class="title" data-bind="item.summary"></span>
+    <span class="date">
+      <span class="dayofweek" data-bind="item.startdate.dayofweek"></span>,&nbsp;
+      <span class="month" data-bind="item.startdate.month"></span>    
+      <span class="day" data-bind="item.startdate.day"></span>&mdash;    
+      <span class="hour" data-bind="item.startdate.hour"></span>:<span class="minute" data-bind="item.startdate.minute">
+      <span class="ampm" data-bind="item.startdate.ampm"></span>    
+    </span>
+  </li>
+  <li data-foreach-item="thisweek" class="thisweek">
+    <span class="title" data-bind="item.summary"></span>
+    <span class="date">
+      <span class="dayofweek" data-bind="item.startdate.dayofweek"></span>,&nbsp;
+      <span class="month" data-bind="item.startdate.month"></span>    
+      <span class="day" data-bind="item.startdate.day"></span>&mdash;    
+      <span class="hour" data-bind="item.startdate.hour"></span>:<span class="minute" data-bind="item.startdate.minute">
+      <span class="ampm" data-bind="item.startdate.ampm"></span>    
+    </span>
+  </li>
+  <li data-foreach-item="later" class="later">
     <span class="title" data-bind="item.summary"></span>
     <span class="date">
       <span class="dayofweek" data-bind="item.startdate.dayofweek"></span>,&nbsp;

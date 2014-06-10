@@ -31,6 +31,11 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
     font-size: 65px;
   }
   
+  ul.upcoming {
+    padding: 0 60px;
+    text-align: left;     
+  }
+  
   ul.upcoming li {
     text-align: left;
   }
@@ -51,5 +56,13 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
   ul.upcoming li span.date {
     padding-left: 40px;
     color: rgba(255, 255, 255, 0.7);
+  }
+  
+  ul.upcoming li.thisweek span.title, ul.upcoming li.thisweek span.date {
+    color: #efd7c2;
+  }
+
+  ul.upcoming li.later span.title, ul.upcoming li.later span.date {
+    color: #E6964F;
   }
 }
