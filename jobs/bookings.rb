@@ -48,7 +48,10 @@ SCHEDULER.every '1m', :first_in => 0 do |job|
           description = summary
         end
         
-        summary = "#{description} (#{summary})"
+        if description != summary
+          summary = "#{description} (#{summary})"
+        end
+        
         time = Time.new()
         today_start = Time.new(time.year, time.month, time.day)
         today_end = today_start + 86399
