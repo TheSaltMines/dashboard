@@ -46,34 +46,28 @@ $artist-color:    #DDD;
   .topics {
     padding: 0 60px;
     text-align: left;
-  }
-  
-  .topics li {
-    display:block;
-    margin-bottom:20px;
-    color: #FFF;
-  }
-  
-  .topics li .details, .topics li.thisweek {
-    color: #efd7c2;
-  }
-  
-  .topics li.earlier, .topics li.earlier .details {
-    color: #be783a;
-  }
-  
-  .topics .topic, .topics .latest {
-    font-size: 18px;
-  }
-  
-  .topics .details, .topics .contributors, .topics .posts {
-    font-size: 14px;
-  }
-  
-  .topics .details {
-    display: block;    
-  }
-  
-  
 
+    li {
+      display:block;
+      margin-bottom:20px;
+      color: #FFF;
+
+      .topic { font-size: 18px; }
+      
+      .details {
+        display: block;    
+        font-size: 14px;
+        color: #efd7c2;
+      }
+      
+      &.thisweek {
+        color: #efd7c2;
+      }
+      
+      &.earlier {
+        color: #be783a;
+        .details { color: #be783a; }
+      }
+    }
+  }
 }
