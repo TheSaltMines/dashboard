@@ -57,6 +57,11 @@ $artist-color:    #DDD;
       .details {
         font-size: 14px;
         color: #efd7c2;
+        // limit to one line
+        width: 360px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
       
       &.thisweek {
