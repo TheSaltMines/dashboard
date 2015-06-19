@@ -7,24 +7,22 @@ $background-color:  #12b0c5;
 // Widget-clock styles
 // ----------------------------------------------------------------------------
 
-span {
-  font-family: 'Century Gothic', Arial;
-  font-size: 46px;
-  padding: 10px 20px;
-}
-
-span.day, span.time {
-  font-weight: bold;
-}
-
-span.date {
-  font-size: 30px;
-  text-transform: lowercase;
-  margin-bottom: 20px;
-}
-
 .widget-clock {
-
   background-color: $background-color;
 
+  span {
+    font-family: 'Century Gothic', Arial;
+    font-size: 46px;
+    padding: 10px 20px;
+  }
+
+  span.day, span.time {
+    font-weight: bold;
+  }
+
+  span.date {
+    font-size: 30px;
+    text-transform: lowercase;
+    margin-bottom: 20px;
+  }
 }
