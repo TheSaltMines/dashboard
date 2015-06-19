@@ -24,27 +24,22 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
   
     li {
       text-align: left;
+      margin-bottom: 20px;
       
-      span {
+      div {
         font-size: 16px;
-        padding: 0;
       }
   
-      span.title, span.date { display:block; }
-  
-      span.title { color: #FFF; }
-  
-      span.date {
-        padding-left: 40px;
-        color: rgba(255, 255, 255, 0.7);
+      .title {
+        color: #FFF;
+        width: 360px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
-
-      &.thisweek {
-        span.title, span.date { color: #efd7c2; }
-      }
-
-      &.later {
-        span.title, span.date { color: #E6964F; }
+  
+      .date {
+        color: rgba(255, 255, 255, 0.5);
       }
     }
   }
