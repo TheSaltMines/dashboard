@@ -8,7 +8,7 @@ class Bookings
       cal_file=(Net::HTTP.get 'booking.saltmines.us', '/info/webcal/258B66.ics')
       calendar = Icalendar.parse(cal_file).first
       events = filter_upcoming(calendar.events).map { |e| event_to_hash(e) }
-      send_event('events', { events: events.take(4) })
+      send_event('events', { events: events.take(6) })
     end
   end
 
