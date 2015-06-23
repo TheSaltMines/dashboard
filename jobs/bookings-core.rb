@@ -10,7 +10,7 @@ class Bookings
     SCHEDULER.every '1m', :first_in => 0 do |job|
       cal_file=(Net::HTTP.get 'booking.saltmines.us', @params[:ical_path])
       calendar = Icalendar.parse(cal_file).first
-      events = filter_upcoming(calendar.events).map { |e| event_to_hash(e) }
+      events = filter(calendar.events).map { |e| event_to_hash(e) }
       send_event(@params[:data_id], { events: events.take(5) })
     end
   end
@@ -42,8 +42,8 @@ class Bookings
       end
     end
   
-    def filter_upcoming(all_events)
-      all_events.select { |e| e.dtend > DateTime.now }
+    def filter(all_events)
+      all_events.select { |e| DateTime.now < e.dtend && e.dtend < DateTime.now + 14 }
     end
 
     # event.summary is the creator's name
