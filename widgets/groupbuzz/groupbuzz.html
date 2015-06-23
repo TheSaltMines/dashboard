@@ -1,28 +1,13 @@
 <h1 class="title">The Buzz</h1>
 
 <ul class="topics list-nostyle">
-  <li data-foreach-item="today" class="today">
+  <li data-foreach-item="topics" data-addclass-thisweek="item.thisweek" data-addclass-earlier="item.earlier">
     <div class="topic" data-bind="item.topic"></div>
     <div class="details">
       <span class="posts" data-bind="item.posts"></span> posts by
       <span class="contributors" data-bind="item.contributors"></span>      
     </div>
   </li>
-  <li data-foreach-item="thisweek" class="thisweek">
-    <div class="topic" data-bind="item.topic"></div>
-    <div class="details">
-      <span class="posts" data-bind="item.posts"></span> posts by
-      <span class="contributors" data-bind="item.contributors"></span>      
-    </div>
-  </li>
-  <li data-foreach-item="earlier" class="earlier">
-    <div class="topic" data-bind="item.topic"></div>
-    <div class="details">
-      <span class="posts" data-bind="item.posts"></span> posts by
-      <span class="contributors" data-bind="item.contributors"></span>      
-    </div>
-  </li>
-  
 </ul>
 
 <p class="updated-at">Read more at http://saltmines.groupbuzz.io</p>
