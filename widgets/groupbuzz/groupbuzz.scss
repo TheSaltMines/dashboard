@@ -3,17 +3,18 @@
 // ----------------------------------------------------------------------------
 $background-color:  #FD952F;
 
-$title-color:       #FFF;
-$moreinfo-color:    #FFF;
+$title-color:     rgba(255, 255, 255, 0.7);
+$moreinfo-color:  rgba(255, 255, 255, 0.7);
 $artist-color:    #DDD;
 
 // ----------------------------------------------------------------------------
 // Widget-radio styles
 // ----------------------------------------------------------------------------
-.widget-groupbuzz {
+.widget.widget-groupbuzz {
 
   background-color: $background-color;
-  vertical-align: top !important;
+  vertical-align: top;
+  padding-top: 45px;
 
   .title {
     color: $title-color;
@@ -27,6 +28,9 @@ $artist-color:    #DDD;
     color: rgba(255, 255, 255, 0.7);
   }
 
+  h1 {
+    margin-bottom: 20px;
+  }
 
   &.large h3 {
     font-size: 65px;
@@ -34,13 +38,6 @@ $artist-color:    #DDD;
   
   span { 
     padding: 0;
-  }
-  
-  h1 {
-    padding-top: 30px;
-    padding-left: 60px;
-    text-align: left;
-    font-weight: bold;
   }
   
   .topics {

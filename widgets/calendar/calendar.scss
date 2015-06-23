@@ -9,14 +9,16 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
 // ----------------------------------------------------------------------------
 // Widget-text styles
 // ----------------------------------------------------------------------------
-.widget-calendar {
+.widget.widget-calendar {
 
   background-color: $background-color;
-  vertical-align: top !important;
+  vertical-align: top;
+  padding-top: 45px;
 
   .title { color: $title-color; }
   .more-info { color: $moreinfo-color; }
   .updated-at { color: rgba(255, 255, 255, 0.7); }
+  h1 { margin-bottom: 20px; }
   
   ul.upcoming {
     padding: 0 60px;

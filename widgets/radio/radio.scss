@@ -3,17 +3,18 @@
 // ----------------------------------------------------------------------------
 $background-color:  #9c4274;
 
-$title-color:       #FFF;
-$moreinfo-color:    #FFF;
+$title-color:     rgba(255, 255, 255, 0.7);
+$moreinfo-color:  rgba(255, 255, 255, 0.7);
 $artist-color:    #DDD;
 
 // ----------------------------------------------------------------------------
 // Widget-radio styles
 // ----------------------------------------------------------------------------
-.widget-radio {
+.widget.widget-radio {
 
   background-color: $background-color;
-  vertical-align: top !important;
+  vertical-align: top;
+  padding-top: 45px;
 
   .title {
     color: $title-color;
@@ -27,6 +28,9 @@ $artist-color:    #DDD;
     color: rgba(255, 255, 255, 0.7);
   }
 
+  h1 {
+    margin-bottom: 20px;
+  }
 
   &.large h3 {
     font-size: 65px;
@@ -36,19 +40,9 @@ $artist-color:    #DDD;
     padding: 0;
   }
   
-  h1 {
-    padding-top: 30px;
-    padding-left: 60px;
-    text-align: left;
-    font-weight: bold;
-  }
-  
-  h1:first-child {
-    padding-top: 20px;
-  }
-  
   span.title {
     display: block;
+    color: #FFF;
     font-size: 28px;
     font-weight: bold;
     width: 400px;
