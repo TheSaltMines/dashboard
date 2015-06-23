@@ -5,7 +5,12 @@ $background-color:  #9c4274;
 
 $title-color:     rgba(255, 255, 255, 0.7);
 $moreinfo-color:  rgba(255, 255, 255, 0.7);
-$artist-color:    #DDD;
+
+@mixin fixed_width {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 // ----------------------------------------------------------------------------
 // Widget-radio styles
@@ -16,86 +21,70 @@ $artist-color:    #DDD;
   vertical-align: top;
   padding-top: 45px;
 
-  .title {
-    color: $title-color;
-  }
+  .title { color: $title-color; }
+  .more-info { color: $moreinfo-color; }
+  .updated-at { color: rgba(255, 255, 255, 0.7); }
+  h1 { margin-bottom: 20px; }
 
-  .more-info {
-    color: $moreinfo-color;
-  }
+  text-align: left;
 
-  .updated-at {
-    color: rgba(255, 255, 255, 0.7);
-  }
-
-  h1 {
-    margin-bottom: 20px;
-  }
-
-  &.large h3 {
-    font-size: 65px;
-  }
-  
-  span { 
-    padding: 0;
-  }
-  
-  span.title {
-    display: block;
-    color: #FFF;
-    font-size: 28px;
-    font-weight: bold;
+  .now_playing {
     width: 400px;
-    text-align: left;
-    margin-left: auto;
-    margin-right: auto;    
+    margin: 0 auto;
+    margin-bottom: 10px;
+
+    img.cover {
+      margin-bottom: 10px;
+      width: 400px;
+      height: 400px;
+    }
+
+    .title {
+      font-size: 28px;
+      font-weight: bold;
+      color: #FFF;
+      @include fixed_width;
+    }
+  
+    .artist {
+      font-size: 18px;
+      color: $moreinfo-color;
+      @include fixed_width;
+    }
   }
   
-  span.artist {
-    display: block;
-    font-size: 18px;
-    color: $artist-color;
+  .previously_played {
     width: 400px;
-    text-align: left;
-    margin-left: auto;
-    margin-right: auto;    
-  }
-  
-  .upcoming {
-    padding: 0 60px;
-  }
-  
-  .upcoming li {
-    height: 55px;
-    text-align: left;
-    position: relative;
-  }
-  
-  /* Only show the first three upcoming tracks */
-  .upcoming li:nth-child(n+4) {
-    display: none;
-  }
-  
-  .upcoming li span, .upcoming li img {
-    display: inline;
-    padding: 0;
-  }
-  .upcoming span.title {
-    font-size: 24px;
-    position: absolute;
-    font-weight: normal;
-    top: 0;
-    left: 60px;
-    margin: 0;
-    text-align: left;
-  }
-  
-  .upcoming span.artist {
-    font-size: 16px;
-    position: absolute;
-    top: 30px;
-    left: 60px;
-    margin: 0;
-    text-align: left;
+    margin: 0 auto;
+
+    .previously_played_header {
+      font-size: 22px;
+      color: rgba(255, 255, 255, 0.3);
+      margin-bottom: 10px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      
+      img {
+        float: left;
+        margin-right: 10px;
+      }
+
+      .title {
+        font-size: 22px;
+        color: $moreinfo-color;
+        @include fixed_width;
+      }
+
+      .artist {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.3);
+        @include fixed_width;
+      }
+
+      /* Only show the first three upcoming tracks */
+      &:nth-child(n+5) { display: none; }
+    }
   }
 }

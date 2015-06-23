@@ -1,15 +1,19 @@
 <h1 class="title" data-bind="title"></h1>
 
-<img data-bind-src="npcover" width="400" height="400"/>
-<span class="title" data-bind="nptitle"></span>
-<span class="artist" data-bind="npartist"></span>
+<div class='now_playing'>
+  <img data-bind-src="npcover" class='cover'/>
+  <div class="title" data-bind="nptitle"></div>
+  <div class="artist" data-bind="npartist"></div>
+</div>
 
-<h1 class="title">Previously played</h1>
 
-<ul class="upcoming list-nostyle">
+<ul class="previously_played list-nostyle">
+
+  <div class='previously_played_header'>Previously played</div>
+
   <li data-foreach-item="upcoming">
     <img data-bind-src="item.cover" width="50" height="50" />
-    <span class="title" data-bind="item.title"></span>
-    <span class="artist" data-bind="item.artist"></span>
+    <div class="title" data-bind="item.title"></div>
+    <div class="artist" data-bind="item.artist"></div>
   </li>
 </ul>
