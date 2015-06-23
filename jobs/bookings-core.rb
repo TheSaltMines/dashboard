@@ -2,13 +2,16 @@ require 'icalendar'
 
 class Bookings
 
+  def initialize(params)
+    @params = params
+  end
+
   def run
     SCHEDULER.every '1m', :first_in => 0 do |job|
-
-      cal_file=(Net::HTTP.get 'booking.saltmines.us', '/info/webcal/258B66.ics')
+      cal_file=(Net::HTTP.get 'booking.saltmines.us', @params[:ical_path])
       calendar = Icalendar.parse(cal_file).first
       events = filter_upcoming(calendar.events).map { |e| event_to_hash(e) }
-      send_event('events', { events: events.take(5) })
+      send_event(@params[:data_id], { events: events.take(5) })
     end
   end
 
@@ -63,6 +66,3 @@ class Bookings
       description && !description.include?('http://')
     end
 end
-
-Bookings.new.run
-
