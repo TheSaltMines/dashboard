@@ -22,7 +22,8 @@ class Bookings
         summary: summary(event),
         date: format_date(event.dtstart),
         starttime: format_time(event.dtstart),
-        endtime: format_time(event.dtend)
+        endtime: format_time(event.dtend),
+        later: is_later?(event.dtend)
       }
     end
 
@@ -42,6 +43,11 @@ class Bookings
       else
         time.strftime('%-l:%M%P')     # 3:15pm
       end
+    end
+    
+    # later events are styled differently in widget
+    def is_later?(time)
+      time.to_date > Date.today + 1
     end
   
     def filter(all_events)
