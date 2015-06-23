@@ -29,6 +29,8 @@ class Bookings
     def format_date(date)
       if date.to_date == Date.today
         'Today'
+      elsif date.to_date == Date.today + 1
+        'Tomorrow'
       else
         date.strftime('%A, %b %-d')   # Tuesday, Jun 23
       end
