@@ -2,7 +2,7 @@
 
 <div class='now_playing'>
   <img data-bind-src="npcover" class='cover'/>
-  <div class="title" data-bind="nptitle"></div>
+  <div class="track" data-bind="nptrack"></div>
   <div class="artist" data-bind="npartist"></div>
 </div>
 
@@ -13,7 +13,7 @@
 
   <li data-foreach-item="upcoming">
     <img data-bind-src="item.cover" width="50" height="50" />
-    <div class="title" data-bind="item.title"></div>
+    <div class="track" data-bind="item.track"></div>
     <div class="artist" data-bind="item.artist"></div>
   </li>
 </ul>

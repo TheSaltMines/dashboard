@@ -39,7 +39,7 @@ $moreinfo-color:  rgba(255, 255, 255, 0.7);
       height: 400px;
     }
 
-    .title {
+    .track {
       font-size: 28px;
       font-weight: bold;
       color: #FFF;
@@ -71,7 +71,7 @@ $moreinfo-color:  rgba(255, 255, 255, 0.7);
         margin-right: 10px;
       }
 
-      .title {
+      .track {
         font-size: 22px;
         color: $moreinfo-color;
         @include fixed_width;

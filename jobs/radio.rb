@@ -7,11 +7,11 @@ SCHEDULER.every '5s', :first_in => 0 do |job|
   doc = REXML::Document.new(response.body)
 
   npcover = ""
-  nptitle = ""
+  nptrack = ""
   npartist = ""
   doc.elements.each('playlist/song') { |element|
     npcover = element.elements["coverart"].text
-    nptitle = element.elements["title"].text
+    nptrack = element.elements["title"].text
     npartist = element.elements["artist"].text
   }
 
@@ -21,17 +21,17 @@ SCHEDULER.every '5s', :first_in => 0 do |job|
 
   upcoming = Hash.new({ value: 0 })
   ppcover = ""
-  pptitle = ""
+  pptrack = ""
   ppartist = ""
   doc.elements.each('playlist/song') { |element|
     i = i + 1
     if i > 1
       ppcover = element.elements["coverart"].text
-      pptitle = element.elements["title"].text
+      pptrack = element.elements["title"].text
       ppartist = element.elements["artist"].text
-      upcoming[i-1] = { cover: ppcover, title: pptitle, artist: ppartist }
+      upcoming[i-1] = { cover: ppcover, track: pptrack, artist: ppartist }
     end
   }
 
-  send_event('radio', { npcover: npcover, nptitle: nptitle, npartist: npartist, upcoming: upcoming.values})
+  send_event('radio', { npcover: npcover, nptrack: nptrack, npartist: npartist, upcoming: upcoming.values})
 end
