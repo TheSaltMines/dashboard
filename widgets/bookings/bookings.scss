@@ -27,25 +27,21 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
     li {
       text-align: left;
       margin-bottom: 20px;
+      color: #FFF;
       
       div {
         font-size: 16px;
       }
   
-        color: #FFF;
       .summary {
         width: 360px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-  
-      .date {
-        color: rgba(255, 255, 255, 0.4);
-      }
 
       &.later {
-        .summary, .date { color: rgba(255, 255, 255, 0.4); }
+        color: rgba(255, 255, 255, 0.4);
       }
     }
   }
