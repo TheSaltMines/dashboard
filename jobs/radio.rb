@@ -1,7 +1,7 @@
 # :first_in sets how long it takes before the job is first run. In this case, it is run immediately
 require 'net/http'
 require 'rexml/document'
-SCHEDULER.every '15s', :first_in => 0 do |job|
+SCHEDULER.every '5s', :first_in => 0 do |job|
   http = Net::HTTP.new('radioparadise.com')
   response = http.request(Net::HTTP::Get.new("/xml/now.xml"))
   doc = REXML::Document.new(response.body)
