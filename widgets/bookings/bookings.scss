@@ -32,8 +32,8 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
         font-size: 16px;
       }
   
-      .title {
         color: #FFF;
+      .summary {
         width: 360px;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -45,7 +45,7 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
       }
 
       &.later {
-        .title, .date { color: rgba(255, 255, 255, 0.4); }
+        .summary, .date { color: rgba(255, 255, 255, 0.4); }
       }
     }
   }
