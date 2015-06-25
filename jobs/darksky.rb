@@ -11,5 +11,5 @@ SCHEDULER.every '1m', :first_in => 0 do |job|
     upcoming << ({ x: i+1, y: json['minutely']['data'][i]['precipIntensity'] })
   end
 
-  send_event('darksky', { points: upcoming, summary: json['minutely']['summary'] })
+  send_event('darksky', { points: upcoming, summary: json['minutely']['summary'] + ' ' + json['hourly']['summary'] })
 end
