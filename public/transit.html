@@ -63,7 +63,7 @@
       	setInterval(function() { updateMarkers() }, 300000);
 
         function updateMarkers() {
-          var features = sm;
+          var features = sm.slice();
 
           $.getJSON("https://www.car2go.com/api/v2.0/vehicles?loc=columbus&format=json&callback=?", function(response) {
           	for (var i in response.placemarks) {
