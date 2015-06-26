@@ -174,7 +174,9 @@ class Dashing.Rickshawgraph extends Dashing.Widget
     if Rickshaw.Fixtures.Time.Local
       xAxisOptions.timeFixture = new Rickshaw.Fixtures.Time.Local()
 
-    x_axis = new Rickshaw.Graph.Axis.X(graph: graph, tickFormat: Rickshaw.Fixtures.Number.formatMinutes)
+    x_axis = new Rickshaw.Graph.Axis.X(graph: graph, tickFormat: (x) ->
+      parseInt(x) + 'm'
+    )
     y_axis = new Rickshaw.Graph.Axis.Y(graph: graph, tickFormat: Rickshaw.Fixtures.Number.formatIntensity)
 
     if @get("legend")
