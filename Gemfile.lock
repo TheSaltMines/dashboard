@@ -31,12 +31,20 @@ GEM
     execjs (2.0.2)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.9.1)
+      faraday (>= 0.7.4, < 0.10)
+    hashie (3.4.2)
     hike (1.2.3)
     http (0.6.4)
       http_parser.rb (~> 0.6.0)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
     icalendar (2.3.0)
+    instagram (1.1.5)
+      faraday (>= 0.7, < 0.10)
+      faraday_middleware (>= 0.8, < 0.10)
+      hashie (>= 0.4.0)
+      multi_json (~> 1.0, >= 1.0.3)
     json (1.8.3)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
@@ -98,5 +106,6 @@ DEPENDENCIES
   activesupport
   dashing
   icalendar
+  instagram
   twitter
   xml-simple
