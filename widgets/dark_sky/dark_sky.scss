@@ -1,0 +1,61 @@
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+$background-color:  #47bbb3;
+
+$title-color:       rgba(255, 255, 255, 0.7);
+$moreinfo-color:    rgba(255, 255, 255, 0.3);
+$tick-color:        rgba(0, 0, 0, 0.5);
+
+
+// ----------------------------------------------------------------------------
+// Widget-darksky styles
+// ----------------------------------------------------------------------------
+.widget.widget-dark-sky {
+
+  background-color: $background-color;
+  vertical-align: top;
+  padding-top: 35px;
+  position: relative;
+
+  h2 {
+    font-size: 24px;
+    color: #333;
+  }
+
+  svg {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+  }
+
+  .title, .value {
+    position: relative;
+    z-index: 99;
+  }
+
+  .title {
+    color: $title-color;
+  }
+
+  .more-info {
+    color: $moreinfo-color;
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 0;
+  }
+
+  .x_ticks_d3 {
+    font-size: 18px;
+    fill: $tick-color;
+  }
+
+  .y_ticks {
+    font-size: 18px;
+    fill: $tick-color;
+  }
+
+  .domain {
+    display: none;
+  }
+}
