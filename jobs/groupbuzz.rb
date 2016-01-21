@@ -10,7 +10,7 @@ class GroupBuzz
       topics += filter(raw_topics['thisweek']).map { |p| topic_to_hash(p).merge(thisweek: true) }
       topics += filter(raw_topics['earlier']).map { |p| topic_to_hash(p).merge(earlier: true) }
       
-      send_event('groupbuzz', { topics: topics.take(7) })
+      send_event('groupbuzz', { topics: topics.take(6) })
     end
   end
 
