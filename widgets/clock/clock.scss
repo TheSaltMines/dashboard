@@ -9,6 +9,7 @@ $background-color:  #12b0c5;
 
 .widget-clock {
   background-color: $background-color;
+  padding: 0 !important;
 
   span {
     font-family: 'Century Gothic', Arial;
