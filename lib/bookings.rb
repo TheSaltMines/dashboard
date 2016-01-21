@@ -11,7 +11,7 @@ class Bookings
       cal_file=(Net::HTTP.get 'booking.saltmines.us', @params[:ical_path])
       calendar = Icalendar.parse(cal_file).first
       events = filter(calendar.events).map { |e| event_to_hash(e) }
-      send_event(@params[:data_id], { events: events.take(5) })
+      send_event(@params[:data_id], { events: events.take(@params[:num_events]) })
     end
   end
 
