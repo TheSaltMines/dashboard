@@ -71,4 +71,11 @@ $artist-color:    #DDD;
       }
     }
   }
+  
+  // class applied to north dashboard to reduce # topics shown
+  &.limit_to_5_topics {
+    .topics {
+      li:nth-child(1n+6) { display: none; }
+    }
+  }
 }

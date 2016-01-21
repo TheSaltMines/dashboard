@@ -1,32 +1,9 @@
 // ----------------------------------------------------------------------------
 // Sass declarations
 // ----------------------------------------------------------------------------
-$background-color:  #4b4b4b;
+$background-color:  #222;
 
-// ----------------------------------------------------------------------------
-// Widget-image styles
-// ----------------------------------------------------------------------------
-.widget-image {
-
+.widget.widget-instagram {
+  padding: 0;
   background-color: $background-color;
-
-}
-
-#instagram {
-  display: block;
-
-  h1 {
-    position: absolute;
-    left: 18px;
-    top: 25px;
-  }
-
-  .widget {
-    padding: 0;
-
-    img {
-      top: -4.4%;
-      position: absolute;
-    }
-  }
 }

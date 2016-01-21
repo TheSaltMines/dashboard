@@ -2,7 +2,7 @@
 $(function() {
   // These settings override the defaults set in application.coffee. You can do this on a per dashboard basis.
 
-  Dashing.widget_base_dimensions = [270, 106]
+  Dashing.widget_base_dimensions = [270, 60]
   Dashing.numColumns = 6
 });
 </script>
@@ -11,6 +11,7 @@ $(function() {
   body, div, p, li, span {
     font-family: 'Armata', 'Century Gothic', 'Arial';
   }
+  #container { padding-top: 0; }  /* remove 5px top padding to prevent grid from overflowing the display */
 </style>
 
 
@@ -18,28 +19,28 @@ $(function() {
 
 <div class="gridster">
   <ul>
-    <li id="clock" data-row="1" data-col="1" data-sizex="4" data-sizey="1">
+    <li id="clock" data-row="1" data-col="1" data-sizex="4" data-sizey="2">
       <div data-view="Clock"></div>
       <i class="icon-time icon-background"></i>
     </li>
-    <li id="events-north" data-row="2" data-col="1" data-sizex="2" data-sizey="4">
+    <li id="events-north" data-row="3" data-col="1" data-sizex="2" data-sizey="7">
       <div data-id="events-north" data-view="Bookings" data-title="Conference Room Schedule"></div>
     </li>
-    <li id="events-device" data-row="2" data-col="3" data-sizex="2" data-sizey="4">
+    <li id="events-device" data-row="3" data-col="3" data-sizex="2" data-sizey="7">
       <div data-id="events-device" data-view="Bookings" data-title="Device Lab Schedule"></div>
     </li>
-    <li id="twitter" data-row="6" data-col="1" data-sizex="4" data-sizey="1">
+    <li id="twitter" data-row="9" data-col="1" data-sizex="4" data-sizey="2">
       <div data-id="twitter_mentions" data-view="Comments" style="background-color:#ff9618;"></div>
       <i class="icon-twitter icon-background"></i>
     </li>
-    <li id="dark_sky" data-row="7" data-col="1" data-sizex="4" data-sizey="3">
+    <li id="dark_sky" data-row="12" data-col="1" data-sizex="4" data-sizey="4">
       <div data-id="dark_sky" data-view="DarkSky" data-title="Dark Sky" data-displayed-value="summary"></div>
     </li>
-    <li id="groupbuzz" data-row="1" data-col="5" data-sizex="2" data-sizey="5">
-      <div data-id="groupbuzz" data-view="Groupbuzz" data-title="The Buzz"></div>
+    <li id="groupbuzz" data-row="1" data-col="5" data-sizex="2" data-sizey="7">
+      <div data-id="groupbuzz" data-view="Groupbuzz" data-title="The Buzz" class="limit_to_5_topics"></div>
     </li>
-    <li id="instagram" data-row="6" data-col="5" data-sizex="2" data-sizey="4">
-      <div data-id="instagramimage" data-view="Instagram" data-title="On Instagram" style="background-color:#96bf48;"></div>
+    <li id="instagram" data-row="5" data-col="5" data-sizex="2" data-sizey="8">
+      <div data-id="instagramimage" data-view="Instagram" data-title="On Instagram"></div>
     </li>
   </ul>
 </div>
