@@ -70,12 +70,27 @@ $artist-color:    #DDD;
         .details { color: #be783a; }
       }
     }
+
+    // fade out and clip topics at bottom of widget
+    overflow: hidden;
+    position: relative;
+    height: 440px;    // hard-coded to work for south layout
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      margin: 0; padding: 20px 0; 
+      background-image: linear-gradient(to bottom, rgba($background-color, 0), $background-color);
+    }
   }
   
-  // class applied to north dashboard to reduce # topics shown
-  &.limit_to_5_topics {
+  // class applied to north dashboard to hard-code height for north layout
+  &.for_north_dashboard {
     .topics {
-      li:nth-child(1n+6) { display: none; }
+      height: 330px;
     }
   }
 }
