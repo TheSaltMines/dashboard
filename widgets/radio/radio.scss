@@ -6,6 +6,8 @@ $background-color:  #9c4274;
 $title-color:     rgba(255, 255, 255, 0.7);
 $moreinfo-color:  rgba(255, 255, 255, 0.7);
 
+$content_width: 400px;
+
 @mixin fixed_width {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -29,14 +31,14 @@ $moreinfo-color:  rgba(255, 255, 255, 0.7);
   text-align: left;
 
   .now_playing {
-    width: 400px;
+    width: $content_width;
     margin: 0 auto;
     margin-bottom: 10px;
 
     img.cover {
       margin-bottom: 10px;
-      width: 400px;
-      height: 400px;
+      width: $content_width;
+      height: $content_width;
     }
 
     .track {
@@ -54,7 +56,7 @@ $moreinfo-color:  rgba(255, 255, 255, 0.7);
   }
   
   .previously_played {
-    width: 400px;
+    width: $content_width;
     margin: 0 auto;
 
     .previously_played_header {
