@@ -117,15 +117,16 @@ h3 {
 }
 
 .icon-background {
-  width: 100%!important;
-  height: 100%;
   position: absolute;
-  left: 0;
-  top: 0;
   opacity: 0.1;
   font-size: 275px;
+  // WCK center vertically and horizontally
+  width: 100% !important;
   text-align: center;
-  margin-top: 82px;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
 }
 
 .list-nostyle {
