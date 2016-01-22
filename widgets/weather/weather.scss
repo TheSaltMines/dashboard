@@ -10,9 +10,10 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);;
 // ----------------------------------------------------------------------------
 // Widget-weather styles
 // ----------------------------------------------------------------------------
-.widget-weather { 
+.widget.widget-weather { 
  
   background-color: $background-color;
+  vertical-align: top;
   
   .title { 
     color: $title-color;
@@ -24,8 +25,9 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);;
  
   .condition {
     font-weight: 500;
-    font-size: 28px;
-    color: $value-color;
+    font-size: 24px;
+    margin-top: -7px;
+    color: $title-color;
   }
  
   .updated-at {
