@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby "2.3.0"
+
 gem 'dashing'
 gem 'xml-simple'
 gem 'icalendar'
