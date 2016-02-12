@@ -31,6 +31,8 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
   .comment-container {
     display: none;
     position: relative;
+    
+    img { height: 73px; width: 73px; }
   }
   
   .comment {
