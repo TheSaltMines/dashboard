@@ -22,6 +22,14 @@ SCHEDULER.every '5m', :first_in => 0 do |job|
     images.concat(client.tag_recent_media(tags[0].name))
   end
 
+  # Add random photos tagged "saltmines" if we didn't find photos from The Salt Mines
+  if images.length==0
+    tags = client.tag_search('saltmines')
+    if tags.length > 0
+      images.concat(client.tag_recent_media(tags[0].name))
+    end
+  end
+
   images = images.flatten
 
   if images.length > 0
