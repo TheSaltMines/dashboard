@@ -24,5 +24,7 @@ SCHEDULER.every '5m', :first_in => 0 do |job|
 
   images = images.flatten
 
-  send_event('instagramimage', { image: images[rand(images.length)].images.standard_resolution.url })
+  if images.length > 0
+    send_event('instagramimage', { image: images[rand(images.length)].images.standard_resolution.url })
+  end
 end
