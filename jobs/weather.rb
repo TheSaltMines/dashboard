@@ -9,17 +9,22 @@ woe_id = 12776196
 # Temerature format:
 # 'c' for Celcius
 # 'f' for Fahrenheit
-format = 'f'
+temperature_format = 'f'
  
 SCHEDULER.every '1m', :first_in => 0 do |job|
-  http = Net::HTTP.new('weather.yahooapis.com')
-  response = http.request(Net::HTTP::Get.new("/forecastrss?w=#{woe_id}&u=#{format}"))
-  weather_data = XmlSimple.xml_in(response.body, { 'ForceArray' => false })['channel']['item']['condition']
-  weather_location = XmlSimple.xml_in(response.body, { 'ForceArray' => false })['channel']['location']
-  send_event('weather', { :temp => "#{weather_data['temp']}&deg;#{format.upcase}",
-                          :condition => weather_data['text'],
-                          :title => "#{weather_location['city']}",
-                          :climacon => climacon_class(weather_data['code'])})
+  http = Net::HTTP.new('query.yahooapis.com')
+  query = "select item.condition, location from weather.forecast where woeid=#{woe_id}"
+  request_path = "/v1/public/yql?u=#{temperature_format}&format=json&q=#{URI.escape(query)}"
+  response = http.request(Net::HTTP::Get.new(request_path))
+  weather_data = JSON.parse(response.body).deep_symbolize_keys
+  conditions = weather_data[:query][:results][:channel][:item][:condition]
+  location = weather_data[:query][:results][:channel][:location]
+  send_event('weather', {
+    temp: "#{conditions[:temp]}&deg;#{temperature_format.upcase}",
+    condition: conditions[:text],
+    title: "#{location[:city]}",
+    climacon: climacon_class(conditions[:code])
+  })
 end
 
 
