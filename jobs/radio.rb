@@ -2,36 +2,24 @@
 require 'net/http'
 require 'rexml/document'
 SCHEDULER.every '5s', :first_in => 0 do |job|
-  http = Net::HTTP.new('radioparadise.com')
-  response = http.request(Net::HTTP::Get.new("/xml/now.xml"))
+  http = Net::HTTP.new('ws.audioscrobbler.com')
+  response = http.request(Net::HTTP::Get.new("/2.0/?method=user.getrecenttracks&user=thesaltmines&api_key=845d3d4cdeae6e94f8f989e92f1756d0&limit=4&extended=1"))
   doc = REXML::Document.new(response.body)
 
-  npcover = ""
-  nptrack = ""
-  npartist = ""
-  doc.elements.each('playlist/song') { |element|
-    npcover = element.elements["coverart"].text
-    nptrack = element.elements["title"].text
-    npartist = element.elements["artist"].text
-  }
+  tracks = Array.new
+  doc.elements.each('lfm/recenttracks/track') { |element|
+    track = element.elements["name"].text
+    artist = element.elements["artist/name"].text
 
-  response = http.request(Net::HTTP::Get.new("/xml/now_4.xml"))
-  i = 0
-  doc = REXML::Document.new(response.body)
-
-  upcoming = Hash.new({ value: 0 })
-  ppcover = ""
-  pptrack = ""
-  ppartist = ""
-  doc.elements.each('playlist/song') { |element|
-    i = i + 1
-    if i > 1
-      ppcover = element.elements["coverart"].text
-      pptrack = element.elements["title"].text
-      ppartist = element.elements["artist"].text
-      upcoming[i-1] = { cover: ppcover, track: pptrack, artist: ppartist }
+    cover = element.elements["image[@size='large']"].text
+    if cover.nil?
+      cover = element.elements["artist/image[@size='large']"].text
     end
+
+    tracks.push({ cover: cover, track: track, artist: artist })
   }
 
-  send_event('radio', { npcover: npcover, nptrack: nptrack, npartist: npartist, upcoming: upcoming.values})
+  np, upcoming = tracks[0], tracks[1..-1]
+
+  send_event('radio', { npcover: np[:cover], nptrack: np[:track], npartist: np[:artist], upcoming: upcoming})
 end
