@@ -1,6 +1,4 @@
 # :first_in sets how long it takes before the job is first run. In this case, it is run immediately
-require 'last_fm'
-
 SCHEDULER.every '5s', :first_in => 0 do |job|
   np, *upcoming = LastFM.fetch(4)
 
