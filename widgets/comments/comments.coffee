@@ -1,7 +1,7 @@
 class Dashing.Comments extends Dashing.Widget
 
   @accessor 'quote', ->
-    "#{@get('current_comment')?.body}"
+    "“#{@get('current_comment')?.body}”"
 
   ready: ->
     @currentIndex = 0

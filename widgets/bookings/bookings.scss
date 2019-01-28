@@ -14,7 +14,6 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
   background-color: $background-color;
   vertical-align: top;
   padding-top: 45px;
-  max-width: 1px;   // forces .summary div to truncate text instead of expanding this container
 
   .title { color: $title-color; }
   .more-info { color: $moreinfo-color; }

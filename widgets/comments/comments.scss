@@ -12,8 +12,6 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
 .widget-comments {
 
   background-color: $background-color;
-  text-align: left !important;
-  padding: 0px 25px !important;
 
   .title {
     color: $title-color;
@@ -21,26 +19,11 @@ $moreinfo-color:    rgba(255, 255, 255, 0.7);
   }
 
   .name {
-    position: absolute;
-    top: 0;
-    left: 80px;
-    font-size: 20px;
-    padding: 0;
+    padding-left: 5px;
   }
 
   .comment-container {
     display: none;
-    position: relative;
-    
-    img { height: 73px; width: 73px; }
-  }
-  
-  .comment {
-    position: absolute;
-    top: 34px;
-    left: 80px;
-    line-height: 1.3em;
-    font-size: 16px;
   }
 
   .more-info {
