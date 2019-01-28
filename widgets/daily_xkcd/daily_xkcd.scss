@@ -1,0 +1,60 @@
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+$background-color:  white;
+
+$header-color:     rgba(0, 0, 0, 0.7);
+
+$title-color:      rgba(0, 0, 0, 0.7);
+
+$caption-color:    rgba(0, 0, 0, 0.7);
+
+$published-color:  rgba(0, 0, 0, 0.7);
+
+$updated-at-color: rgba(0, 0, 0, 0.3);
+
+// ----------------------------------------------------------------------------
+// Widget-daily-xkcd styles
+// ----------------------------------------------------------------------------
+.widget-daily-xkcd {
+  background-color: $background-color;
+  vertical-align: top !important;
+  padding: 8px 12px !important;
+
+  .wrapper {
+    max-height: 100%;
+  }
+
+  .header {
+    color: $header-color;
+
+    font-size: large;
+    font-variant: small-caps;
+  }
+
+  .xkcd-image {
+    
+  }
+
+  .date {
+    color: $published-color;
+    margin-bottom: 0.5vh;
+    font-size: small;
+    text-align: left;
+  }
+
+  .caption {
+    color: $caption-color;
+    font-size: small;
+    text-align: justify;
+    margin-bottom: 0.5vh;
+  }
+
+  .updated-at {
+    color: $updated-at-color;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    bottom:0;
+  }
+}

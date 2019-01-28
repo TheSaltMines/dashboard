@@ -22,6 +22,7 @@ GEM
     icalendar (2.5.2)
       ice_cube (~> 0.16)
     ice_cube (0.16.3)
+    json (2.1.0)
     minitest (5.11.3)
     multi_json (1.13.1)
     mustermann (1.0.3)
@@ -74,6 +75,7 @@ PLATFORMS
 DEPENDENCIES
   activesupport
   icalendar
+  json
   smashing
   xml-simple
 
