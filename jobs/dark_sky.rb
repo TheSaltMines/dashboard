@@ -11,8 +11,7 @@ forecast_location = "40.024888,-83.001876"
 # "us" - U.S. Imperial
 # "si" - International System of Units
 # "uk" - SI w. windSpeed in mph
-forecast_units = "si"
-
+forecast_units = "us"
 
 SCHEDULER.every '5m', :first_in => 0 do |job|
   http = Net::HTTP.new("api.darksky.net", 443)
