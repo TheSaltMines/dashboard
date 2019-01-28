@@ -9,68 +9,68 @@ class Bookings
   def run
     SCHEDULER.every '1m', :first_in => 0 do |job|
       cal_file=(Net::HTTP.get 'booking.saltmines.us', @params[:ical_path])
-      calendar = Icalendar.parse(cal_file).first
+      calendar = Icalendar::Calendar.parse(cal_file).first
       events = filter(calendar.events).map { |e| event_to_hash(e) }
       send_event(@params[:data_id], { events: events.take(@params[:num_events]) })
     end
   end
 
   private
-  
-    def event_to_hash(event)
-      {
-        summary: summary(event),
-        date: format_date(event.dtstart),
-        starttime: format_time(event.dtstart),
-        endtime: format_time(event.dtend),
-        later: is_later?(event.dtend)
-      }
-    end
 
-    def format_date(date)
-      if date.to_date == Date.today
-        'Today'
-      elsif date.to_date == Date.today + 1
-        'Tomorrow'
-      else
-        date.strftime('%A, %b %-d')   # Tuesday, Jun 23
-      end
-    end
-  
-    def format_time(time)
-      if time.min == 0
-        time.strftime('%-l%P')        # 3pm
-      else
-        time.strftime('%-l:%M%P')     # 3:15pm
-      end
-    end
-    
-    # later events are styled differently in widget
-    def is_later?(time)
-      time.to_date > Date.today + 1
-    end
-  
-    def filter(all_events)
-      all_events.select { |e| DateTime.now < e.dtend && e.dtend < DateTime.now + 14 }
-    end
+  def event_to_hash(event)
+    {
+      summary: summary(event),
+      date: format_date(event.dtstart),
+      starttime: format_time(event.dtstart),
+      endtime: format_time(event.dtend),
+      later: is_later?(event.dtend)
+    }
+  end
 
-    # event.summary is the creator's name
-    # event.description is the description that they entered.
-    def summary(event)
-      if is_valid_description?(event.description) && event.summary
-        "#{event.summary} - #{event.description}"
-      elsif is_valid_description?(event.description)
-        event.description
-      elsif event.summary
-        event.summary
-      else
-        "no details"
-      end
+  def format_date(date)
+    if date.to_date == Date.today
+      'Today'
+    elsif date.to_date == Date.today + 1
+      'Tomorrow'
+    else
+      date.strftime('%A, %b %-d')   # Tuesday, Jun 23
     end
+  end
 
-    # If no description was entered, SuperSAAS sets the description to the event's URL.
-    # We want to ignore those descriptions.
-    def is_valid_description?(description)
-      description && !description.include?('http://')
+  def format_time(time)
+    if time.min == 0
+      time.strftime('%-l%P')        # 3pm
+    else
+      time.strftime('%-l:%M%P')     # 3:15pm
     end
+  end
+
+  # later events are styled differently in widget
+  def is_later?(time)
+    time.to_date > Date.today + 1
+  end
+
+  def filter(all_events)
+    all_events.select { |e| DateTime.now < e.dtend && e.dtend < DateTime.now + 14 }
+  end
+
+  # event.summary is the creator's name
+  # event.description is the description that they entered.
+  def summary(event)
+    if is_valid_description?(event.description) && event.summary
+      "#{event.summary} - #{event.description}"
+    elsif is_valid_description?(event.description)
+      event.description
+    elsif event.summary
+      event.summary
+    else
+      "no details"
+    end
+  end
+
+  # If no description was entered, SuperSAAS sets the description to the event's URL.
+  # We want to ignore those descriptions.
+  def is_valid_description?(description)
+    description && !description.include?('http://')
+  end
 end
