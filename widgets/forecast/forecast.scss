@@ -1,0 +1,73 @@
+// ----------------------------------------------------------------------------
+// Sass declarations
+// ----------------------------------------------------------------------------
+$background-color:  #3CAEEC;
+
+$full-color:  rgba(255, 255, 255, 1);
+$light-color: rgba(255, 255, 255, 0.7);
+
+// ----------------------------------------------------------------------------
+// Widget-forecast styles
+// ----------------------------------------------------------------------------
+.widget-title {
+  
+    color: $light-color;
+    font-size: 15px;
+    text-align: left;
+    text-transform: uppercase;
+    position: absolute;
+    top: 5px;
+
+	img {
+    	vertical-align: baseline;
+    	margin-right: 5px;
+    	height: 16px;
+	}
+}
+
+.widget-forecast {
+
+  background-color: $background-color;
+  padding-top: 15px !important;
+
+  h1 {
+    margin-bottom: 0px;
+  }
+
+  .updated-at {
+    color: rgba(0, 0, 0, 0.3);
+    top: 5px;
+    right: 10px;
+    left: auto;
+  }
+
+  .title {
+    color: $light-color;
+    text-align: left;
+    font-size: 25px;
+  }
+
+  .temp {
+    color: $full-color;
+    text-align: left;
+    font-size: 45px;
+  }
+
+  .summary {
+    color: $full-color;
+    text-align: left;
+    vertical-align: middle;
+    font-size: 17px;
+  }
+
+  .forecast-icon {
+    float: left;
+    text-align: left;
+    margin-right: 20px;
+  }
+
+  .more-info {
+      color: $light-color;
+  }
+
+}
