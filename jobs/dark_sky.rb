@@ -19,9 +19,6 @@ SCHEDULER.every '5m', :first_in => 0 do |job|
   http.verify_mode = OpenSSL::SSL::VERIFY_PEER
   response = http.request(Net::HTTP::Get.new("/forecast/#{forecast_api_key}/#{forecast_location}?units=#{forecast_units}"))
   forecast = JSON.parse(response.body)
-  forecast_current_temp = forecast["currently"]["temperature"].round
-  forecast_current_icon = forecast["currently"]["icon"]
-  forecast_current_desc = forecast["currently"]["summary"]
 
   if forecast["minutely"]
     upcoming = forecast['minutely']['data'].each_with_index.map { |d, i| { x: i, y: d['precipIntensity'] } }
@@ -33,6 +30,7 @@ SCHEDULER.every '5m', :first_in => 0 do |job|
 
     send_event('forecast', {
                  current_temp: "#{forecast["currently"]["temperature"].round}&deg;",
+                 current_feels_like: "Feels like #{forecast["currently"]["apparentTemperature"].round}&deg;",
                  current_icon: "#{forecast["currently"]["icon"]}",
                  current_desc: "#{forecast["currently"]["summary"]}",
                  next_icon: "#{forecast["minutely"]["icon"]}",
