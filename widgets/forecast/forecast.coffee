@@ -1,5 +1,4 @@
 class Dashing.Forecast extends Dashing.Widget
-
   # Overrides Dashing.Widget method in dashing.coffee
   @accessor 'updatedAtMessage', ->
     if updatedAt = @get('updatedAt')
@@ -21,6 +20,7 @@ class Dashing.Forecast extends Dashing.Widget
     # Handle incoming data
     # We want to make sure the first time they're set is after ready()
     # has been called, or the Skycons code will complain.
+
     if @forecast_icons.list.length
       @setIcons()
 
@@ -30,9 +30,9 @@ class Dashing.Forecast extends Dashing.Widget
     @setIcon('later_icon')
 
   setIcon: (name) ->
-    skycon = @toSkycon(name)
-    @forecast_icons.set(name, eval(skycon)) if skycon
+    if skycon = @toSkycon(name)
+      @forecast_icons.set(name, skycon)
 
   toSkycon: (data) ->
     if @get(data)
-      'Skycons.' + @get(data).replace(/-/g, "_").toUpperCase()
+      Skycons[@get(data).replace(/-/g, "_").toUpperCase()]

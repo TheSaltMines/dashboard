@@ -35,8 +35,8 @@ SCHEDULER.every '5m', :first_in => 0 do |job|
                  current_temp: "#{forecast["currently"]["temperature"].round}&deg;",
                  current_icon: "#{forecast["currently"]["icon"]}",
                  current_desc: "#{forecast["currently"]["summary"]}",
-                 next_icon: "#{forecast["minutely"]["summary"]}",
-                 next_desc: "#{forecast["minutely"]["icon"]}",
+                 next_icon: "#{forecast["minutely"]["icon"]}",
+                 next_desc: "#{forecast["minutely"]["summary"]}",
                  later_icon: "#{forecast["hourly"]["icon"]}",
                  later_desc: "#{forecast["hourly"]["summary"]}"})
   end
